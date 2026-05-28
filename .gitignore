@@ -45,7 +45,8 @@ data/mcp.secrets.json
 data/mcp-secrets.json
 data/mcp-runs/
 
-docs/_posts/*.md
+# Daily summaries are auto-generated but needed for GitHub Pages
+# docs/_posts/*.md
 
 # Logs
 logs/*.log
