@@ -5,398 +5,401 @@ date: 2026-05-28
 lang: en
 ---
 
-> From 22 items, 17 important content pieces were selected
+> From 24 items, 19 important content pieces were selected
 
 ---
 
-1. [AI-generated CUDA kernels silently break training](#item-1) ⭐️ 9.0/10
-2. [SQLite Adds AGENTS.md to Reject Agentic Code](#item-2) ⭐️ 8.0/10
-3. [Anthropic and OpenAI Achieve Product-Market Fit](#item-3) ⭐️ 8.0/10
-4. [Curl Project Faces Unprecedented AI-Assisted Security Report Flood](#item-4) ⭐️ 8.0/10
-5. [MONET: 104.9M High-Quality Image-Text Dataset Released](#item-5) ⭐️ 8.0/10
-6. [Wall-OSS-0.5: Open 4B VLA with Zero-Shot Robot Evaluation](#item-6) ⭐️ 8.0/10
-7. [Stronger LLMs Can Age Worse in Long Deployments](#item-7) ⭐️ 8.0/10
-8. [Tomesphere: All-in-One Research Dashboard for arxiv Papers](#item-8) ⭐️ 8.0/10
-9. [TritonMoE: Cross-Platform Fused MoE Dispatch Cuts Memory Traffic 35%](#item-9) ⭐️ 8.0/10
-10. [Anthropic Releases Claude Opus 4.8, Teases Mythos Model](#item-10) ⭐️ 7.0/10
-11. [EU fines Temu €200M for illegal product sales](#item-11) ⭐️ 7.0/10
-12. [GPT-like Model Stuck on Single Token in Non-Language Training](#item-12) ⭐️ 7.0/10
-13. [VeritasReason: Open-source framework for explainable AI agents](#item-13) ⭐️ 7.0/10
-14. [CSM Outperforms Hindsight on BEAM 100K Benchmark](#item-14) ⭐️ 7.0/10
-15. [Profiling PyTorch training without stalling GPU](#item-15) ⭐️ 7.0/10
-16. [60-Second Game Simulates AI Agent Permission Fatigue](#item-16) ⭐️ 6.0/10
-17. [Hallucinate: A Browser-Based MMO Rave](#item-17) ⭐️ 6.0/10
+1. [SQLite Adds AGENTS.md to Reject AI-Generated Code](#item-1) ⭐️ 8.0/10
+2. [MONET: 100M+ High-Quality Image-Text Dataset Released](#item-2) ⭐️ 8.0/10
+3. [Wall-OSS-0.5: Open 4B VLA with Zero-Shot Robot Evaluation](#item-3) ⭐️ 8.0/10
+4. [AgingBench: Stronger LLMs Can Degrade Agent Performance Over Time](#item-4) ⭐️ 8.0/10
+5. [Tomesphere: All-in-One Paper Hub for ML Researchers](#item-5) ⭐️ 8.0/10
+6. [TritonMoE: Cross-Platform Fused MoE Dispatch in Triton](#item-6) ⭐️ 8.0/10
+7. [How 2004 RuneScape optimized for 56k dial-up](#item-7) ⭐️ 8.0/10
+8. [Single-Threaded Chat Server: Event-Driven Architecture Deep Dive](#item-8) ⭐️ 8.0/10
+9. [Metastable Failures: Why Fixing Triggers Isn't Enough](#item-9) ⭐️ 8.0/10
+10. [VeritasReason: Open-source knowledge graph + policy engine for AI agents](#item-10) ⭐️ 7.0/10
+11. [GPT-like Model Fails on Non-Language Series](#item-11) ⭐️ 7.0/10
+12. [CSM beats Hindsight on BEAM 100K memory benchmark](#item-12) ⭐️ 7.0/10
+13. [Improving Go Error Handling with Context](#item-13) ⭐️ 7.0/10
+14. [Who Maintains Makefiles in Software Projects?](#item-14) ⭐️ 6.0/10
+15. [Parallelizing Fold Operations in Functional Programming](#item-15) ⭐️ 6.0/10
+16. [Networking Fundamentals Guide for Developers and DevOps](#item-16) ⭐️ 6.0/10
+17. [IBM 9020: The Mainframe That Guided Air Traffic](#item-17) ⭐️ 6.0/10
+18. [Apache Fory Serialization 1.0.0 Released](#item-18) ⭐️ 6.0/10
+19. [Stream Plumbing Patterns for Embedded Systems](#item-19) ⭐️ 6.0/10
 
 ---
 
 <a id="item-1"></a>
-## [AI-generated CUDA kernels silently break training](https://www.reddit.com/r/MachineLearning/comments/1tpaw6x/aigenerated_cuda_kernels_silently_break_training/) ⭐️ 9.0/10
+## [SQLite Adds AGENTS.md to Reject AI-Generated Code](https://simonwillison.net/2026/May/27/sqlite-agents/#atom-everything) ⭐️ 8.0/10
 
-Researchers found that AI-generated CUDA kernels from NVIDIA's SOL-ExecBench, despite passing benchmarks, can silently break training or inference due to subtle numerical bugs, such as accumulating gradients in bf16 instead of fp32. This highlights a critical risk in relying on AI-generated code for production ML systems, as such bugs can waste researcher time by mimicking failed experiments and are hard to detect without careful debugging. The specific bug involved a fused embedding-gradient + RMSNorm backward kernel that accumulated in bf16, causing loss divergence under real text distributions but not with uniform tokens or AdamW. Other broken submissions exhibited different bug patterns.
+SQLite added an AGENTS.md file that explicitly states it does not accept agentic code or pull requests without prior agreement, while welcoming bug reports and documentation patches. The project also split off AI-generated bug reports into a separate Bug Forum. This is a significant move in open-source governance, setting a precedent for how projects handle the influx of AI-generated contributions. It helps maintain code quality and reduces maintainer burden from low-quality automated submissions. The AGENTS.md file was initially created with a softer stance, but a recent commit removed the word "(currently)" to strengthen the policy. SQLite's forum was flooded with AI-generated bug reports, prompting the creation of a dedicated Bug Forum where D. Richard Hipp is actively resolving issues.
 
-reddit · r/MachineLearning · /u/laginimaineb · May 27, 16:35
+rss · Simon Willison · May 27, 23:44
 
-**Background**: CUDA kernels are low-level GPU programs that accelerate deep learning operations. SOL-ExecBench is a benchmark of 235 production CUDA kernels from models like DeepSeek and Qwen, designed to test AI-generated kernel optimization. Numerical precision bugs, like using bf16 instead of fp32 for accumulation, can cause silent accuracy degradation.
+**Background**: AGENTS.md is a file placed in a project's root directory to guide AI coding agents, similar to README.md for humans. Agentic code refers to code generated autonomously by AI agents, often without human oversight. As AI tools become prevalent, many open-source projects face challenges from low-quality automated contributions.
 
 <details><summary>References</summary>
 <ul>
-<li><a href="https://research.nvidia.com/benchmarks/sol-execbench">SOL-ExecBench | GPU Kernel Performance Benchmarks by NVIDIA</a></li>
-<li><a href="https://github.com/NVIDIA/SOL-ExecBench">GitHub - NVIDIA/SOL-ExecBench: A benchmark of real-world DL kernel ...</a></li>
-<li><a href="https://arxiv.org/abs/2603.19173">[2603.19173] SOL-ExecBench: Speed-of-Light Benchmarking for Real-World ...</a></li>
+<li><a href="https://agents.md/">AGENTS.md</a></li>
+<li><a href="https://atlan.com/know/how-to-write-agents-md/">How to Write an AGENTS.md File: The Complete Guide 2026</a></li>
 
 </ul>
 </details>
 
-**Discussion**: The Reddit discussion largely validated the findings, with commenters sharing similar experiences of AI-generated code failing in subtle ways. Some noted that benchmarks often fail to capture real-world distribution shifts, and that careful validation remains essential.
-
-**Tags**: `#AI safety`, `#CUDA`, `#machine learning`, `#software reliability`, `#benchmarking`
+**Tags**: `#sqlite`, `#AI agents`, `#open-source governance`, `#software engineering`
 
 ---
 
 <a id="item-2"></a>
-## [SQLite Adds AGENTS.md to Reject Agentic Code](https://simonwillison.net/2026/May/27/sqlite-agents/#atom-everything) ⭐️ 8.0/10
+## [MONET: 100M+ High-Quality Image-Text Dataset Released](https://www.reddit.com/r/MachineLearning/comments/1tq2vxa/a_new_dataset_with_more_that_100m_hiquality/) ⭐️ 8.0/10
 
-SQLite has added an AGENTS.md file to its repository, explicitly stating that it does not accept agentic code contributions but will accept agentic bug reports with reproducible test cases. The project also removed the word "currently" from its policy to strengthen the stance. This is one of the first major open-source projects to formally define policies for AI agent contributions, setting a precedent for how the industry may handle agentic code. It addresses growing concerns about low-quality AI-generated submissions flooding project maintainers. The AGENTS.md file states that SQLite does not accept pull requests without prior agreement and legal paperwork, but human developers may review a well-written PR as a proof-of-concept. The SQLite forum was so overwhelmed by AI-generated bug reports that a separate Bug Forum was created.
+The MONET dataset, containing 104.9 million high-quality image-text pairs, has been released under the Apache 2.0 license on Hugging Face, along with a paper, UMAP visualization, retrieval tool, and training codebase. This large-scale, open-licensed dataset can significantly advance multimodal AI research, enabling better text-to-image models and reducing reliance on proprietary datasets. MONET was curated from 2.9 billion images down to 104.9 million high-quality samples, and includes companion tools: a UMAP for distribution visualization, a retrieval tool for text/image search, and a codebase for training text-to-image models.
 
-rss · Simon Willison · May 27, 23:44
+reddit · r/MachineLearning · /u/dh7net · May 28, 12:59
 
-**Background**: AGENTS.md is a new convention for guiding AI coding agents, similar to a README but for automated tools. Agentic coding refers to autonomous AI agents that plan, write, test, and modify code with minimal human intervention. SQLite is a widely embedded relational database engine that has historically been cautious about accepting external contributions.
+**Background**: Large-scale image-text datasets are crucial for training multimodal models like DALL·E and Stable Diffusion. However, many existing datasets are either limited in size, restricted by licenses, or noisy. MONET aims to address these issues with a permissive license and high-quality curation.
 
 <details><summary>References</summary>
 <ul>
-<li><a href="https://agents.md/">AGENTS . md</a></li>
-<li><a href="https://cloud.google.com/discover/what-is-agentic-coding">What is agentic coding? How it works and use cases | Google Cloud</a></li>
-<li><a href="https://en.wikipedia.org/wiki/SQLite">SQLite - Wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Apache_License">Apache License</a></li>
+<li><a href="https://umap-learn.readthedocs.io/en/latest/interactive_viz.html">Interactive Visualizations — umap 0.5.8 documentation</a></li>
 
 </ul>
 </details>
 
-**Discussion**: The community discussion (via Alex Garcia on Datasette Discord) highlights that D. Richard Hipp is actively resolving issues from the new Bug Forum with many commits. The overall sentiment seems supportive of SQLite's clear stance against agentic code while still accepting useful bug reports.
-
-**Tags**: `#sqlite`, `#ai-agents`, `#open-source`, `#software-engineering`, `#policy`
+**Tags**: `#dataset`, `#image-text`, `#machine learning`, `#open source`, `#curation`
 
 ---
 
 <a id="item-3"></a>
-## [Anthropic and OpenAI Achieve Product-Market Fit](https://simonwillison.net/2026/May/27/product-market-fit/#atom-everything) ⭐️ 8.0/10
+## [Wall-OSS-0.5: Open 4B VLA with Zero-Shot Robot Evaluation](https://www.reddit.com/r/MachineLearning/comments/1tq8v8m/walloss05_4b_vla_with_open_training_code_and/) ⭐️ 8.0/10
 
-Simon Willison argues that Anthropic and OpenAI have found product-market fit, citing rising enterprise API usage and rumors of Anthropic's first profitable quarter. Both companies have shifted enterprise plans to API-based pricing, leading to unexpectedly high bills for heavy users. This signals that AI labs are transitioning from research projects to sustainable businesses, validating the enterprise demand for LLMs. It also implies that AI coding agents and other tools are becoming indispensable, driving real revenue growth. Willison calculated that his personal usage of Claude Code and OpenAI Codex would cost $2,180.16 in API tokens but he only paid $200 via subscription plans. Enterprise plans now charge $20/seat/month plus API usage, catching customers off guard with high bills.
+X Square Robot released Wall-OSS-0.5, a 4B-parameter Vision-Language-Action (VLA) model with open training code, achieving zero-shot performance on a 17-task real-robot suite and 60.5 average task progress after fine-tuning on 15 tasks. This release advances open-source VLA research by providing fully open training code and demonstrating strong zero-shot generalization on real robots, including deformable tasks, which is crucial for general-purpose robotics. The model uses a Mixture-of-Transformers architecture with a 3B VLM backbone and action experts, employs a Vision-Aligned RVQ tokenizer for discrete action tokens, and uses flow matching in recovered action space for continuous actions. It also introduces DMuon, a distributed Muon optimizer with claimed overhead reduction.
 
-rss · Simon Willison · May 27, 16:38
+reddit · r/MachineLearning · /u/Tall-Peak2618 · May 28, 16:37
 
-**Background**: Product-market fit, a concept popularized by Marc Andreessen, means a product satisfies a strong market demand. For AI labs, achieving this has been uncertain due to high compute costs and unclear revenue models. Recent pricing changes and profitability rumors suggest a turning point.
+**Background**: Vision-Language-Action (VLA) models combine visual, language, and action modalities to enable robots to understand and execute tasks. Mixture-of-Transformers (MoT) is a sparse architecture that uses modality-specific experts to improve efficiency. Zero-shot evaluation tests a model's ability to perform tasks without prior fine-tuning, indicating generalization.
 
-<details><summary>References</summary>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/Product-market_fit">Product-market fit - Wikipedia</a></li>
-<li><a href="https://cryptorank.io/news/feed/e4afc-anthropic-first-profitable-quarter-2026">Anthropic projects first profitable quarter , reaching $10.9B in revenue</a></li>
+**Discussion**: The Reddit discussion focuses on technical sanity checks: the gradient bridge claim that action-token CE dominates backbone updates, the plausibility of DMuon's overhead reduction, and whether Vision-Aligned RVQ tokenization outperforms FAST-style tokenization. Users seek third-party reproduction results to validate the reported numbers.
 
-</ul>
-</details>
-
-**Tags**: `#AI`, `#LLMs`, `#product-market fit`, `#Anthropic`, `#OpenAI`
+**Tags**: `#VLA`, `#robotics`, `#open-source`, `#Mixture-of-Transformers`, `#zero-shot`
 
 ---
 
 <a id="item-4"></a>
-## [Curl Project Faces Unprecedented AI-Assisted Security Report Flood](https://simonwillison.net/2026/May/26/the-pressure/#atom-everything) ⭐️ 8.0/10
+## [AgingBench: Stronger LLMs Can Degrade Agent Performance Over Time](https://www.reddit.com/r/MachineLearning/comments/1tqaoio/your_agents_are_aging_too_agent_lifespan/) ⭐️ 8.0/10
 
-Daniel Stenberg reports that the curl project is receiving 4-5 times more security reports than in 2024, with double the rate of 2025, averaging over one report per day, all of high quality and detail due to AI assistance. This surge highlights a critical real-world impact of AI on open-source maintenance, straining maintainers' work-life balance and threatening project sustainability, which could affect the countless systems that rely on curl. Despite the flood, curl remains solid; all vulnerabilities found in recent years are LOW or MEDIUM severity, with the last HIGH severity CVE published in October 2023 (CVE-2023-38545).
-
-rss · Simon Willison · May 26, 23:48
-
-**Background**: curl is a widely used open-source command-line tool and library for transferring data with URLs, supporting numerous protocols. AI-assisted security research uses large language models to automatically generate detailed vulnerability reports, which can overwhelm maintainers with high volumes of credible-looking issues.
-
-<details><summary>References</summary>
-<ul>
-<li><a href="https://curl.se/">curl</a></li>
-<li><a href="https://en.wikipedia.org/wiki/CURL">cURL - Wikipedia</a></li>
-<li><a href="https://www.helpnetsecurity.com/2026/05/18/problems-with-ai-assisted-vulnerability-research/">AI is drowning software maintainers in junk security reports - Help Net Security</a></li>
-
-</ul>
-</details>
-
-**Tags**: `#open source`, `#security`, `#AI`, `#curl`, `#maintenance`
-
----
-
-<a id="item-5"></a>
-## [MONET: 104.9M High-Quality Image-Text Dataset Released](https://www.reddit.com/r/MachineLearning/comments/1tq2vxa/a_new_dataset_with_more_that_100m_hiquality/) ⭐️ 8.0/10
-
-The MONET dataset, containing 104.9 million high-quality image-text pairs, has been released under the Apache 2.0 license on Hugging Face, along with a paper and companion tools including a UMAP visualization, retrieval tool, and T2I training codebase. This large-scale, open-licensed dataset can significantly advance multimodal AI research, enabling training of better image-text models without restrictive licensing, and its companion tools lower the barrier for researchers and practitioners. The dataset was curated from 2.9 billion images down to 104.9 million high-quality samples, and is accompanied by a paper detailing the creation process, a UMAP visualization for distribution exploration, a retrieval tool for text or image search, and a codebase for training text-to-image models.
-
-reddit · r/MachineLearning · /u/dh7net · May 28, 12:59
-
-**Background**: Large-scale image-text datasets like LAION-5B have been crucial for training models such as Stable Diffusion, but many are not fully open or have quality issues. MONET addresses this by providing a high-quality, permissively licensed alternative. The Apache 2.0 license allows free use, modification, and distribution, even for commercial purposes.
-
-**Tags**: `#dataset`, `#image-text`, `#machine learning`, `#open source`
-
----
-
-<a id="item-6"></a>
-## [Wall-OSS-0.5: Open 4B VLA with Zero-Shot Robot Evaluation](https://www.reddit.com/r/MachineLearning/comments/1tq8v8m/walloss05_4b_vla_with_open_training_code_and/) ⭐️ 8.0/10
-
-X Square Robot released Wall-OSS-0.5, a 4B-parameter Vision-Language-Action (VLA) model built on a 3B VLM backbone with a Mixture-of-Transformers layout, along with open training code and a zero-shot real-robot evaluation on 17 tasks. This release lowers the barrier for embodied AI research by providing a competitive open-source VLA with strong zero-shot and fine-tuned performance, enabling broader community reproduction and innovation in robot learning. The model uses a Vision-Aligned RVQ tokenizer for discrete action tokens and flow matching for continuous actions, supervised in recovered action space. It also introduces DMuon, a distributed Muon optimizer claiming significant overhead reduction.
-
-reddit · r/MachineLearning · /u/Tall-Peak2618 · May 28, 16:37
-
-**Background**: Vision-Language-Action (VLA) models combine visual perception, language understanding, and action generation for robot control. They are typically built by fine-tuning a vision-language model (VLM) to output low-level robot actions. Mixture-of-Transformers (MoT) is a sparse multi-modal architecture that reduces pretraining costs by using separate transformer blocks for different modalities.
-
-<details><summary>References</summary>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/Vision-language-action_model">Vision–language–action model - Wikipedia</a></li>
-<li><a href="https://arxiv.org/abs/2411.04996">[2411.04996] Mixture - of - Transformers : A Sparse and Scalable...</a></li>
-<li><a href="https://github.com/openvla/openvla">GitHub - openvla/openvla: OpenVLA: An open-source...</a></li>
-
-</ul>
-</details>
-
-**Discussion**: The community is actively debating the gradient bridge claim that discrete action-token cross-entropy dominates backbone gradients, and the DMuon optimizer's overhead reduction. Users are asking for independent reproduction on real hardware to validate the reported numbers.
-
-**Tags**: `#VLA`, `#robotics`, `#open-source`, `#machine learning`, `#embodied AI`
-
----
-
-<a id="item-7"></a>
-## [Stronger LLMs Can Age Worse in Long Deployments](https://www.reddit.com/r/MachineLearning/comments/1tqaoio/your_agents_are_aging_too_agent_lifespan/) ⭐️ 8.0/10
-
-A new benchmark called AgingBench reveals that swapping a stronger LLM backend (Opus 4.7) for a weaker one (Sonnet 4.6) in the Claude Code CLI agent caused a ~15% drop in PyTest pass rate over long deployments, challenging the assumption that stronger models always improve agent performance. This finding is significant because it shows that agent lifespan engineering—not just raw model capability—is critical for reliable long-term deployment of AI agents, affecting anyone building or deploying autonomous coding assistants or other long-lived agentic systems. The benchmark measures agent performance over many sessions, focusing on memory state evolution (compression, interference, revision, maintenance shocks). Memory policy alone drove a 4.5x spread in agent half-life, larger than any model swap tested.
+Researchers introduced AgingBench, a longitudinal benchmark for coding agents, and found that swapping the Claude Code CLI agent's backbone from Sonnet 4.6 to Opus 4.7 caused a ~15% drop in PyTest pass rate over long deployments. 这个反直觉的结果挑战了简单升级到更强模型的常见做法，揭示了智能体寿命工程——管理记忆状态演化——对于可靠的长期AI智能体至关重要。 The benchmark organizes agent aging into four mechanisms: compression, interference, revision, and maintenance shocks. Memory policy alone drove a 4.5x spread in agent half-life, larger than any model swap tested.
 
 reddit · r/MachineLearning · /u/CategoryNormal149 · May 28, 17:41
 
-**Background**: AI agents often rely on memory systems to persist context across sessions, but this memory can degrade over time due to compression, interference, and other factors. Agent lifespan engineering (ALE) is a new field that studies how to maintain agent reliability over long deployments, beyond initial model capability.
+**Background**: Deployed AI agents, such as coding assistants, operate over many sessions and accumulate memory state. Agent lifespan engineering studies how to maintain reliability over time, analogous to software maintenance. AgingBench provides a standardized way to measure longitudinal degradation.
 
 <details><summary>References</summary>
 <ul>
-<li><a href="https://agingbench.github.io/">AgingBench: AI Agents Age Too</a></li>
+<li><a href="https://news.ycombinator.com/item?id=48302022">AgingBench: AI Agents Age Too - Hacker News</a></li>
 <li><a href="https://arxiv.org/abs/2605.26302">[2605.26302] Your Agents Are Aging Too: Agent Lifespan ...</a></li>
 <li><a href="https://www.alphaxiv.org/overview/2605.26302v1">Your Agents Are Aging Too: Agent Lifespan Engineering ... | alphaXiv</a></li>
 
 </ul>
 </details>
 
-**Discussion**: The Reddit discussion largely validates the findings, with users sharing similar experiences of agent degradation over time. Some debate whether the effect is due to memory policy or model-specific behaviors, but most agree that longitudinal evaluation is essential for production systems.
+**Discussion**: The Reddit discussion is substantive, with users debating whether the effect is due to memory policy or model characteristics. Some share anecdotal experiences of agent degradation in production, while others question the benchmark's generalizability.
 
-**Tags**: `#AI Agents`, `#LLM Deployment`, `#Benchmarking`, `#Agent Lifespan`, `#Machine Learning`
+**Tags**: `#AI agents`, `#LLM deployment`, `#benchmarking`, `#software engineering`
+
+---
+
+<a id="item-5"></a>
+## [Tomesphere: All-in-One Paper Hub for ML Researchers](https://www.reddit.com/r/MachineLearning/comments/1tq53il/kept_contextswitching_between_arxiv_openreview/) ⭐️ 8.0/10
+
+A developer built Tomesphere, a Chrome extension and website that aggregates arxiv papers with LLM-generated TLDRs, OpenReview reviews, GitHub repos, HuggingFace models, conference videos, citation graphs, and SPECTER2-based semantic neighbors, indexing 3 million papers. This tool significantly reduces context-switching for ML researchers by bringing together paper metadata, reviews, code, and models in one place, potentially accelerating literature review and reproducibility efforts. The Chrome extension uses Manifest V3 side panel API to render inline on arxiv, while the website is at tomesphere.com. Reviewer scores are only available for venues that publish openly on OpenReview (e.g., NeurIPS, ICLR, ICML, TMLR, COLM); blind-review venues like CVPR are not yet covered.
+
+reddit · r/MachineLearning · /u/RegretAgreeable4859 · May 28, 14:21
+
+**Background**: Researchers often need to check multiple platforms (arxiv, OpenReview, GitHub, HuggingFace) to fully understand a paper. Tomesphere aggregates these sources into a single interface, using SPECTER2 embeddings to find semantically similar papers beyond citation links.
+
+<details><summary>References</summary>
+<ul>
+<li><a href="https://arxiv.org/html/2507.13105v1">SemCSE: Semantic Contrastive Sentence Embeddings Using</a></li>
+<li><a href="https://github.com/brave/brave-browser/issues/32132">Chrome Extension Sidepanel API not working in Brave #32132 - GitHub</a></li>
+<li><a href="https://stackoverflow.com/questions/76539413/how-do-i-get-access-to-the-chrome-sidepanel-api-from-the-latest-manifest-v3">How do I get access to the chrome.sidePanel API from the ...</a></li>
+
+</ul>
+</details>
+
+**Discussion**: The community response is positive, with users appreciating the tool's utility and the author actively seeking feedback on which paper they checked first and what features are missing.
+
+**Tags**: `#arxiv`, `#research tools`, `#machine learning`, `#paper discovery`, `#openreview`
+
+---
+
+<a id="item-6"></a>
+## [TritonMoE: Cross-Platform Fused MoE Dispatch in Triton](https://www.reddit.com/r/MachineLearning/comments/1tpj6e5/crossplatform_fused_moe_dispatch_in_triton/) ⭐️ 8.0/10
+
+A new Mixture-of-Experts inference kernel called TritonMoE, written entirely in OpenAI Triton, achieves cross-platform portability across NVIDIA and AMD GPUs without vendor-specific code. It fuses the gate and up GEMM projections into a single SwiGLU pass, reducing global memory traffic by 35%. This work demonstrates that Triton can produce competitive MoE kernels for both NVIDIA and AMD hardware, potentially reducing the need for vendor-specific CUDA or ROCm optimizations. It could lower the barrier for deploying large MoE models across heterogeneous GPU clusters. TritonMoE achieves 89-131% of Megablocks throughput at inference batch sizes up to 512 tokens on A100, and the same kernel runs unchanged on MI300X. However, performance degrades at batch sizes above 2048 tokens and with 64+ experts under extreme routing skew.
+
+reddit · r/MachineLearning · /u/bassrehab · May 27, 21:25
+
+**Background**: Mixture-of-Experts (MoE) models use multiple specialized sub-networks (experts) and a router to select which experts to activate per input. Efficient inference requires careful kernel design to handle dynamic expert routing and memory access patterns. OpenAI's Triton is a domain-specific language and compiler that allows writing GPU kernels in a hardware-agnostic way, targeting both NVIDIA and AMD GPUs.
+
+<details><summary>References</summary>
+<ul>
+<li><a href="https://arxiv.org/pdf/2605.23911">Cross-Platform Fused MoE Dispatch in Triton : Portable Expert...</a></li>
+<li><a href="https://aiweekly.co/alerts/tritonmoe-closes-amd-gap-in-moe-inference-kernels">TritonMoE closes AMD gap in MoE inference kernels | AI Weekly</a></li>
+<li><a href="https://pytorch.org/blog/accelerating-moe-model/">Accelerating MoE model inference with Locality-Aware Kernel Design...</a></li>
+
+</ul>
+</details>
+
+**Tags**: `#Mixture-of-Experts`, `#Triton`, `#GPU Inference`, `#Cross-Platform`, `#Kernel Optimization`
+
+---
+
+<a id="item-7"></a>
+## [How 2004 RuneScape optimized for 56k dial-up](https://www.reddit.com/r/programming/comments/1tq65b4/how_2004_runescape_fit_a_multiplayer_rpg_into_56k/) ⭐️ 8.0/10
+
+A technical deep-dive explains how the 2004 version of RuneScape was engineered to run smoothly over 56k dial-up connections, using efficient network protocols and minimal data transfer. This analysis highlights timeless optimization principles that are valuable for modern game developers working on low-bandwidth or mobile environments, and it showcases how constraints can drive creative engineering. RuneScape used a custom TCP-based protocol that sent only essential state changes, kept packet sizes small, and employed client-side prediction to mask latency.
+
+reddit · r/programming · /u/jkmonger · May 28, 15:00
+
+**Background**: In 2004, many players accessed the internet via dial-up modems with speeds up to 56 kbps and high latency (~150ms). Online multiplayer games typically required more bandwidth, making RuneScape's ability to support thousands of concurrent players on such connections a notable engineering feat.
+
+<details><summary>References</summary>
+<ul>
+<li><a href="https://www.mmorpg.com/news/goodbye-duel-arena-hello-hets-oasis-as-runescape-destroys-an-18-year-pvp-destination-2000124005">Goodbye Duel Arena, Hello Het's Oasis as RuneScape Destroys an</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Dial-up_Internet_access">Dial - up Internet access - Wikipedia</a></li>
+<li><a href="https://github.com/lesleyrs/Client3">GitHub - lesleyrs/Client3: RuneScape 2 client ported to C ·</a></li>
+
+</ul>
+</details>
+
+**Discussion**: The Reddit discussion praised the article for its technical depth and nostalgia, with many sharing personal experiences of playing RuneScape on dial-up. Some commenters debated the trade-offs of TCP vs UDP for game networking.
+
+**Tags**: `#game development`, `#networking`, `#optimization`, `#retro computing`
 
 ---
 
 <a id="item-8"></a>
-## [Tomesphere: All-in-One Research Dashboard for arxiv Papers](https://www.reddit.com/r/MachineLearning/comments/1tq53il/kept_contextswitching_between_arxiv_openreview/) ⭐️ 8.0/10
+## [Single-Threaded Chat Server: Event-Driven Architecture Deep Dive](https://www.reddit.com/r/programming/comments/1tq6jqt/what_happens_when_you_build_a_chat_server_on_one/) ⭐️ 8.0/10
 
-A developer built Tomesphere, a Chrome extension and website that aggregates arxiv papers with LLM-curated summaries, OpenReview reviews, GitHub repos, HuggingFace models, citation graphs, and SPECTER2 semantic neighbors, covering 3 million papers. This tool significantly reduces context-switching for ML researchers by bringing together multiple sources of information on a single page, saving time and improving research efficiency. The Chrome extension uses the MV3 side panel API to render an inline panel on arxiv pages, while the website is available at tomesphere.com. Reviewer scores are only available for venues that publish openly on OpenReview (e.g., NeurIPS, ICLR, ICML), and matches for GitHub, HuggingFace, and conference videos are best-effort.
+A Reddit post explores the design and performance of building a chat server using a single thread, likely leveraging event-driven programming and asynchronous I/O. This discussion highlights the trade-offs between single-threaded event-driven models and multi-threaded approaches, which is crucial for systems programming and high-concurrency applications. The post likely covers the use of an event loop to handle multiple connections without blocking, and may compare performance with multi-threaded or multi-process servers.
 
-reddit · r/MachineLearning · /u/RegretAgreeable4859 · May 28, 14:21
+reddit · r/programming · /u/boostlibs · May 28, 15:14
 
-**Background**: Researchers often need to check multiple platforms (arxiv, OpenReview, GitHub, HuggingFace) to fully evaluate a paper. SPECTER2 is a document embedding model from AI2 that generates semantic embeddings for scientific papers, enabling similarity-based neighbor recommendations. The MV3 side panel API allows Chrome extensions to display content in a side panel alongside the main page.
+**Background**: Event-driven programming is a paradigm where the program flow is determined by external events, commonly used in GUI applications and network servers. Asynchronous I/O allows a program to initiate an I/O operation and continue processing other tasks before the operation completes, improving efficiency in I/O-bound applications.
 
 <details><summary>References</summary>
 <ul>
-<li><a href="https://tomesphere.com/">Tomesphere . The paper page arxiv didn't build</a></li>
-<li><a href="https://chromewebstore.google.com/detail/tomesphere/nopoigoclhjcopjppnehidnkljmabllk">Tomesphere - Chrome Web Store</a></li>
-<li><a href="https://allenai.org/blog/specter2-adapting-scientific-document-embeddings-to-multiple-fields-and-task-formats-c95686c06567">SPECTER2: Adapting scientific document embeddings to multiple fields and task formats | Ai2</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Event-driven_programming">Event-driven programming</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Async_I/O">Async I/O</a></li>
 
 </ul>
 </details>
 
-**Discussion**: The community responded positively, with users praising the tool's utility and providing constructive feedback. Some users requested features like filtering by review score or adding more venues, while others appreciated the LLM-curated summaries and citation graph.
-
-**Tags**: `#arxiv`, `#research tools`, `#machine learning`, `#citation graph`, `#openreview`
+**Tags**: `#concurrency`, `#chat server`, `#event-driven`, `#systems programming`, `#async I/O`
 
 ---
 
 <a id="item-9"></a>
-## [TritonMoE: Cross-Platform Fused MoE Dispatch Cuts Memory Traffic 35%](https://www.reddit.com/r/MachineLearning/comments/1tpj6e5/crossplatform_fused_moe_dispatch_in_triton/) ⭐️ 8.0/10
+## [Metastable Failures: Why Fixing Triggers Isn't Enough](https://www.reddit.com/r/programming/comments/1tph0c5/metastable_failures_explained_why_fixing_the/) ⭐️ 8.0/10
 
-Researchers released TritonMoE, a Mixture-of-Experts inference kernel written entirely in OpenAI Triton that fuses the gate and up projections of SwiGLU, reducing global memory traffic by 35% and achieving 89-131% of Megablocks throughput on A100 at inference batch sizes up to 512 tokens. This work demonstrates that Triton can produce portable, high-performance MoE kernels that run unchanged on both NVIDIA and AMD GPUs, reducing vendor lock-in and enabling broader adoption of MoE models in production. The fused gate+up GEMM computes both SwiGLU projections from shared tile loads, eliminating redundant memory reads. The kernel falls behind Megablocks at 2048+ tokens and degrades with 64+ experts under extreme routing skew.
+A technical deep-dive explains that metastable failures in distributed systems persist even after the initial trigger is removed, because the system remains in a self-sustaining degraded state. Understanding metastable failures is critical for building reliable distributed systems, as traditional root-cause fixes often fail to restore normal operation. The article likely covers mechanisms like load amplification, resource exhaustion, and feedback loops that keep the system in a metastable state, requiring interventions beyond trigger removal.
 
-reddit · r/MachineLearning · /u/bassrehab · May 27, 21:25
+reddit · r/programming · /u/teivah · May 27, 20:06
 
-**Background**: Mixture-of-Experts (MoE) models use multiple specialized sub-networks (experts) and a router to activate only a subset per input, enabling larger model capacity without proportional compute. SwiGLU is an activation function used in modern LLMs like LLaMA that combines a gating mechanism with a linear projection. Triton is a Python-embedded DSL and compiler for writing efficient GPU kernels without vendor-specific code.
+**Background**: Metastable failures occur when a system enters a degraded state that persists even after the initial cause is resolved, due to self-reinforcing feedback loops. This is a known challenge in distributed systems design, often requiring careful capacity planning and circuit breakers to prevent.
 
-<details><summary>References</summary>
-<ul>
-<li><a href="https://openai.com/index/triton/">Introducing Triton: Open-source GPU programming for neural networks | OpenAI</a></li>
-<li><a href="https://rocm.blogs.amd.com/artificial-intelligence/triton/README.html">Developing Triton Kernels on AMD GPUs - ROCm™ Blogs</a></li>
-<li><a href="https://www.byhand.ai/p/swiglu-the-activation-function-behind">SwiGLU: The Activation Function Behind Frontier AI</a></li>
-
-</ul>
-</details>
-
-**Discussion**: The Reddit discussion praised the work for its clear benchmarks and honest limitations, with several commenters noting the potential for Triton to unify MoE kernel development across hardware. Some questioned the practical impact of the 35% memory reduction at inference time, while others appreciated the open-source release.
-
-**Tags**: `#Mixture-of-Experts`, `#Triton`, `#GPU kernels`, `#inference optimization`, `#cross-platform`
+**Tags**: `#distributed systems`, `#reliability`, `#failure modes`, `#software engineering`
 
 ---
 
 <a id="item-10"></a>
-## [Anthropic Releases Claude Opus 4.8, Teases Mythos Model](https://www.anthropic.com/news/claude-opus-4-8) ⭐️ 7.0/10
+## [VeritasReason: Open-source knowledge graph + policy engine for AI agents](https://www.reddit.com/r/MachineLearning/comments/1tqcmtj/i_built_a_knowledge_graph_policy_engine_for_ai/) ⭐️ 7.0/10
 
-Anthropic has released Claude Opus 4.8, a modest incremental improvement over Opus 4.7, and announced that a more powerful Mythos-class model under Project Glasswing is expected in the coming weeks. This release shows Anthropic's continued refinement of its frontier models, while the upcoming Mythos-class model promises significantly higher intelligence, potentially reshaping cybersecurity and other high-stakes domains. Opus 4.8 allows users to disable adaptive thinking in the web UI, addressing a common pain point. The Mythos Preview is currently being tested by select organizations for cybersecurity work under Project Glasswing.
+The author released VeritasReason, an open-source Python framework that combines knowledge graphs, a forward-chaining rule engine, and W3C PROV-O provenance tracking to provide explainable reasoning and audit trails for AI agents. This addresses a critical gap in AI agent auditability, especially for regulated industries like healthcare, finance, and legal, where decisions must be traceable and policy-compliant. The framework supports any LLM (OpenAI, Anthropic, Groq, Ollama), uses YAML rules without requiring code, and allows queries like 'Which purchase orders violated SoD policy in Q1?'.
 
-hackernews · craigmart · May 28, 16:49 · [Discussion](https://news.ycombinator.com/item?id=48311647)
+reddit · r/MachineLearning · /u/BitterHouse8234 · May 28, 18:50
 
-**Background**: Anthropic's Claude model family includes tiers like Haiku, Sonnet, and Opus, with Opus being the most capable. Project Glasswing is a defensive cybersecurity initiative using a new frontier model called Claude Mythos Preview, which Anthropic has committed $100M in model usage credits to support.
+**Background**: AI agents often make decisions without recording provenance, making debugging and compliance difficult. Knowledge graphs structure information as interconnected entities, while policy engines enforce business rules. W3C PROV-O is a standard for provenance tracking.
 
-<details><summary>References</summary>
-<ul>
-<li><a href="https://www.anthropic.com/glasswing">Project Glasswing : Securing critical software for the AI era \ Anthropic</a></li>
-<li><a href="https://www.axios.com/2026/05/28/anthropic-opus-release-mythos">A Mythos - class model is expected in the coming weeks.</a></li>
+**Discussion**: The community discussion was substantive, with technical questions about integration and performance. The author actively engaged, explaining design choices and future plans.
 
-</ul>
-</details>
-
-**Discussion**: Community members noted that Opus 4.8 is the third minor version bump in the Opus 4.5 family, with modest gains. Some appreciated the ability to disable adaptive thinking, while others expressed excitement about the Mythos-class model's potential for cybersecurity.
-
-**Tags**: `#AI`, `#Anthropic`, `#Claude`, `#LLM`, `#cybersecurity`
+**Tags**: `#knowledge graph`, `#AI agents`, `#policy engine`, `#provenance`, `#explainability`
 
 ---
 
 <a id="item-11"></a>
-## [EU fines Temu €200M for illegal product sales](https://www.bbc.co.uk/news/articles/c1k2ydn1rz8o) ⭐️ 7.0/10
+## [GPT-like Model Fails on Non-Language Series](https://www.reddit.com/r/MachineLearning/comments/1tprt80/training_gptlike_model_on_nonlanguage_series_r/) ⭐️ 7.0/10
 
-The European Union has fined Temu €200 million for allowing the sale of illegal and unsafe products on its platform, marking one of the largest penalties under the Digital Services Act (DSA). This fine signals the EU's aggressive enforcement of the DSA against major e-commerce platforms, potentially forcing Temu and similar marketplaces to tighten product safety checks and compliance. It also highlights ongoing tensions between low-cost Chinese imports and European regulatory standards. The fine was imposed under the Digital Services Act, which requires platforms to remove illegal products and mitigate systemic risks. Temu, owned by PDD Holdings, has expanded to over 90 markets and is known for heavily discounted goods shipped directly from China.
+A researcher reports that GPT-like transformer-decoder models with 100M to 500M parameters fail to learn autoregressive behavior when trained on non-language series data, despite careful hyperparameter tuning. This highlights that GPT training techniques, which work well for language, may not transfer directly to other sequence modalities, posing a challenge for applying transformers to domains like time series or biological sequences. The model uses a vocabulary of 15k–100k tokens, with ~3% of tokens appearing in 50% of training data, similar to language sparsity. The model gets stuck generating a single token repeatedly, indicating failure to learn basic autoregression.
 
-hackernews · jjp · May 28, 14:18 · [Discussion](https://news.ycombinator.com/item?id=48309302)
+reddit · r/MachineLearning · /u/gartin336 · May 28, 03:31
 
-**Background**: Temu is an online marketplace that connects consumers directly with Chinese manufacturers, offering low prices but often facing scrutiny over product safety and counterfeit goods. The EU's Digital Services Act, effective since 2024, imposes strict obligations on large platforms to police illegal content and products. This fine is among the first major DSA penalties, signaling a new era of regulatory enforcement.
+**Background**: GPT-like models are transformer decoders trained autoregressively to predict the next token. They excel on language data but their success on non-language sequences (e.g., numerical series, genomic data) is less established. The training recipe—AdamW optimizer, learning rate scheduling, etc.—is often borrowed from language tasks.
 
 <details><summary>References</summary>
 <ul>
-<li><a href="https://en.wikipedia.org/wiki/Temu">Temu - Wikipedia</a></li>
-<li><a href="https://en.wikipedia.org/wiki/Temu_(company)">Temu (website) - Wikipedia</a></li>
-<li><a href="https://digital-strategy.ec.europa.eu/en/policies/digital-services-act">The Digital Services Act | Shaping Europe ’s digital future</a></li>
+<li><a href="https://en.wikipedia.org/wiki/GPT-3">GPT-3 - Wikipedia</a></li>
 
 </ul>
 </details>
 
-**Discussion**: Community comments are mixed: some argue Temu fills a real need for affordable goods, especially in regions with limited choices, while others question the effectiveness of EU fines, comparing it to 'whack-a-mole' regulation. A few commenters note that similar issues exist with other Chinese platforms like Aliexpress.
+**Discussion**: The post invites expert discussion, but no comments are provided in the content. The community sentiment is likely curious and engaged, as the problem is niche yet important.
 
-**Tags**: `#e-commerce`, `#regulation`, `#EU`, `#product safety`, `#Temu`
+**Tags**: `#GPT`, `#transformer`, `#training`, `#non-language`, `#autoregressive`
 
 ---
 
 <a id="item-12"></a>
-## [GPT-like Model Stuck on Single Token in Non-Language Training](https://www.reddit.com/r/MachineLearning/comments/1tprt80/training_gptlike_model_on_nonlanguage_series_r/) ⭐️ 7.0/10
+## [CSM beats Hindsight on BEAM 100K memory benchmark](https://www.reddit.com/r/MachineLearning/comments/1tpjx2m/beam_100k_memory_benchmark_csm_vs_hindsight_local/) ⭐️ 7.0/10
 
-A researcher reports that a GPT-like transformer decoder with up to 500M parameters fails to learn autoregressive behavior on non-language series, repeatedly generating the same token. They share detailed hyperparameters and seek community advice on debugging this failure. This highlights a common practical challenge in applying GPT-like architectures beyond natural language, where subtle training issues can cause complete failure. Insights from this case could help researchers working on time series, genomics, or other non-language sequence modeling. The model uses 16-48 layers, 16 attention heads, context window 1000, and AdamW optimizer with lr=1e-3, betas=(0.9,0.95), effective batch size 4M tokens. The vocabulary is 15k-100k tokens, with ~3% of tokens used in 50% of training data, similar to language sparsity.
+Context Swarm Memory (CSM) achieved a higher AMB score (0.7576 vs 0.7337) and used 38.2% fewer answer-visible context tokens than Hindsight on the BEAM 100K benchmark, though CSM's retrieval speed is slower (29.23s vs 6.38s). This comparison highlights a promising new memory architecture for LLM agents that improves accuracy and token efficiency, which is critical for long-running agent tasks where context windows are limited. CSM uses bounded read-only memory shards, query routing, probe/recall/synthesis, cited packets, and explicit Committer-gated writes; the benchmark is a local replication of the BEAM 100K accepted artifact, not an official leaderboard submission.
 
-reddit · r/MachineLearning · /u/gartin336 · May 28, 03:31
+reddit · r/MachineLearning · /u/keonakoum · May 27, 21:53
 
-**Background**: Autoregressive transformers like GPT are trained to predict the next token in a sequence, using causal self-attention to prevent looking ahead. When training on non-language data (e.g., numerical series), the model may fail if the data lacks the statistical structure of natural language, or if hyperparameters are not properly tuned. Common failure modes include getting stuck on a single token, which often indicates issues with loss landscape, learning rate, or tokenization.
+**Background**: BEAM 100K is a benchmark for evaluating memory systems in LLM agents, measuring how well agents can retrieve and use past information. Hindsight is a prior memory system that serves as a baseline. CSM is an open-source R&D memory layer designed for long-running agents.
 
 <details><summary>References</summary>
 <ul>
-<li><a href="https://aarambhdevhub.medium.com/i-wanted-to-build-a-real-ai-model-like-gpt-heres-what-happened-instead-2036683efbd2">I Wanted to Build a Real AI Model Like GPT . Here’s What... | Medium</a></li>
+<li><a href="https://www.reddit.com/r/ArtificialInteligence/comments/1tpjbt4/opensource_csm_bounded_shard_memory_for/">Open-source CSM: bounded shard memory for long-running AI agents</a></li>
 
 </ul>
 </details>
 
-**Tags**: `#transformer`, `#autoregressive`, `#training`, `#non-language`, `#debugging`
+**Discussion**: The Reddit discussion focuses on evaluation methodology, with commenters suggesting independent replication, testing on BEAM 10M, and addressing speed trade-offs. The author is transparent about limitations and invites feedback.
+
+**Tags**: `#memory systems`, `#LLM benchmarks`, `#agent memory`, `#evaluation methodology`
 
 ---
 
 <a id="item-13"></a>
-## [VeritasReason: Open-source framework for explainable AI agents](https://www.reddit.com/r/MachineLearning/comments/1tqcmtj/i_built_a_knowledge_graph_policy_engine_for_ai/) ⭐️ 7.0/10
+## [Improving Go Error Handling with Context](https://www.reddit.com/r/programming/comments/1tq1jya/the_missing_context_of_go_errors/) ⭐️ 7.0/10
 
-The developer released VeritasReason, an open-source Python framework that adds a structured reasoning and provenance layer to LLM-based AI agents, featuring context graphs, a forward-chaining rule engine, and W3C PROV-O provenance tracking. This addresses a critical gap in AI agent auditability and explainability, especially for regulated industries like healthcare, finance, and legal, where decisions must be traceable and policy-compliant. The framework works with any LLM (OpenAI, Anthropic, Groq, Ollama) and allows querying policy violations, such as 'Which purchase orders violated SoD policy in Q1?', with full provenance back to source facts.
+A Reddit discussion proposes adding missing context to Go errors to make them more informative, addressing a common pain point in Go error handling. This matters because Go's current error handling often lacks sufficient context, making debugging difficult. A more informative approach could improve developer productivity and code reliability. The proposal likely involves wrapping errors with additional metadata such as function names, call stacks, or variable values. The discussion explores trade-offs between simplicity and informativeness.
 
-reddit · r/MachineLearning · /u/BitterHouse8234 · May 28, 18:50
+reddit · r/programming · /u/Mellowww · May 28, 12:02
 
-**Background**: AI agents often make decisions without recording their reasoning, leading to zero audit trails when errors occur. Knowledge graphs store structured relationships between entities, while rule engines apply predefined policies to infer new facts. W3C PROV-O is a standard ontology for representing provenance information.
+**Background**: Go uses explicit error returns rather than exceptions. Errors are values that can be checked, but often lack context about where and why they occurred. The community has debated improvements like error wrapping and custom types.
 
-<details><summary>References</summary>
-<ul>
-<li><a href="https://en.wikipedia.org/wiki/Business_rules_engine">Business rules engine - Wikipedia</a></li>
-<li><a href="https://en.wikipedia.org/wiki/W3C_Prov">W3C Prov - Wikipedia</a></li>
-<li><a href="https://www.w3.org/TR/prov-o/">PROV-O: The PROV Ontology</a></li>
+**Discussion**: The discussion likely includes diverse viewpoints on the best way to add context, with some advocating for standard library changes and others preferring third-party libraries. There may be debates on performance impact and backward compatibility.
 
-</ul>
-</details>
-
-**Discussion**: The Reddit discussion includes technical questions about integration with existing systems and the author's responses, showing engagement and credibility. Some users express interest in using it for compliance-heavy workflows.
-
-**Tags**: `#knowledge graph`, `#AI agents`, `#explainability`, `#policy engine`, `#provenance`
+**Tags**: `#Go`, `#error handling`, `#software engineering`, `#programming`
 
 ---
 
 <a id="item-14"></a>
-## [CSM Outperforms Hindsight on BEAM 100K Benchmark](https://www.reddit.com/r/MachineLearning/comments/1tpjx2m/beam_100k_memory_benchmark_csm_vs_hindsight_local/) ⭐️ 7.0/10
+## [Who Maintains Makefiles in Software Projects?](https://www.reddit.com/r/programming/comments/1tq2og7/who_makes_the_makefiles/) ⭐️ 6.0/10
 
-Context Swarm Memory (CSM) achieved a higher AMB score (0.7576 vs 0.7337) and more correct answers (342 vs 326) than Hindsight on the BEAM 100K benchmark, while using 38.2% fewer context tokens, though with slower retrieval (29.23s vs 6.38s). This comparison introduces a novel memory architecture that improves accuracy and efficiency, potentially advancing agent memory systems for AI agents. The open-source release and call for independent replication invite community validation and methodological improvement. CSM uses bounded read-only memory shards, query routing, probe/recall/synthesis, cited packets, and explicit Committer-gated writes. The benchmark is limited to BEAM 100K with a local accepted artifact, not an official leaderboard or BEAM 10M claim.
+A Reddit post titled 'Who Makes the Makefiles?' sparked discussion about the authorship and maintenance of Makefiles in software projects, highlighting a common but often overlooked aspect of build systems. Understanding who creates and maintains Makefiles is important because build systems are critical to software development efficiency and reliability; this discussion sheds light on the division of labor and potential bottlenecks in open-source and commercial projects. The post itself does not contain additional content beyond the title and link, but the topic touches on the fact that Makefiles are often written by a single person or a small subset of developers, leading to knowledge silos and maintenance challenges.
 
-reddit · r/MachineLearning · /u/keonakoum · May 27, 21:53
+reddit · r/programming · /u/realguy2300000 · May 28, 12:50
 
-**Background**: Agent memory systems help AI agents retain and recall information across interactions. BEAM is a benchmark for evaluating agent memory performance, and Hindsight is a leading open-source memory system that enables agent learning through reflection and multi-strategy retrieval.
+**Background**: A Makefile is a configuration file used by the Make build automation tool to define dependencies and commands for building software. Make is widely used in Unix-like systems, and while many alternatives exist, Makefiles remain common in many projects. The question of who writes these files often arises because they require specialized knowledge and can become complex.
 
 <details><summary>References</summary>
 <ul>
-<li><a href="https://vectorize.io/hindsight">Hindsight - Open Source Agent Memory</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Makefile">Makefile</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Make_(software)">Make (software) - Wikipedia</a></li>
 
 </ul>
 </details>
 
-**Discussion**: The Reddit post seeks feedback on evaluation methodology, with the author emphasizing the need for independent replication and official chart acceptance. Commenters are likely to scrutinize the comparison's fairness, reproducibility, and the trade-off between speed and accuracy.
+**Discussion**: No comments were provided in the news item, so community sentiment is unavailable.
 
-**Tags**: `#machine learning`, `#memory systems`, `#benchmark`, `#open source`, `#evaluation methodology`
+**Tags**: `#build systems`, `#Makefile`, `#software engineering`, `#devops`
 
 ---
 
 <a id="item-15"></a>
-## [Profiling PyTorch training without stalling GPU](https://www.reddit.com/r/MachineLearning/comments/1tp2nnw/profiling_pytorch_training_without_accidentally/) ⭐️ 7.0/10
+## [Parallelizing Fold Operations in Functional Programming](https://www.reddit.com/r/programming/comments/1tpvbpx/folding_in_parallel/) ⭐️ 6.0/10
 
-A technique using CUDA events to profile PyTorch training is described, which avoids the performance penalty of torch.cuda.synchronize() by reading timing results asynchronously. This lightweight profiling approach allows ML engineers to measure training performance more accurately without distorting the runtime behavior, enabling better optimization decisions. The method uses CUDA events around selected boundaries and reads them later, so timing is captured without forcing synchronization in the hot path; it serves as a first pass before deeper profiling with tools like PyTorch Profiler or Nsight.
+A Reddit post explores techniques for parallelizing fold operations, a fundamental functional programming pattern, to improve performance on multi-core systems. Parallelizing folds can significantly speed up data processing in functional languages, making them more competitive for high-performance computing tasks. The post likely discusses the requirement for the combining operation to be associative for safe parallelization, and the overhead of splitting data structures.
 
-reddit · r/MachineLearning · /u/traceml-ai · May 27, 11:24
+reddit · r/programming · /u/Xaneris47 · May 28, 06:28
 
-**Background**: PyTorch training typically runs CUDA operations asynchronously, meaning the CPU does not wait for GPU kernels to finish. Using torch.cuda.synchronize() forces the CPU to wait, which can significantly slow down training (e.g., 6x slower in some cases). CUDA events provide a way to record timestamps on the GPU without stalling the pipeline, allowing accurate profiling with minimal overhead.
+**Background**: A fold (or reduce) is a higher-order function that processes a data structure using a combining operation, producing a single result. In functional programming, folds are common but inherently sequential; parallelizing them requires associative operations and careful handling of data partitioning.
 
 <details><summary>References</summary>
 <ul>
-<li><a href="https://github.com/pytorch/pytorch/issues/18012">Using torch . cuda . synchronize causes 6 times slower. · Issue #18012...</a></li>
+<li><a href="https://stackoverflow.com/questions/19117922/parallel-folding-in-haskell">parallel "Folding" in Haskell - Stack Overflow</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Fold_(higher-order_function)">Fold (higher-order function) - Wikipedia</a></li>
 
 </ul>
 </details>
 
-**Tags**: `#PyTorch`, `#profiling`, `#CUDA`, `#training optimization`, `#machine learning`
+**Tags**: `#functional programming`, `#parallel computing`, `#algorithms`, `#performance`
 
 ---
 
 <a id="item-16"></a>
-## [60-Second Game Simulates AI Agent Permission Fatigue](https://llmgame.scalex.dev/) ⭐️ 6.0/10
+## [Networking Fundamentals Guide for Developers and DevOps](https://www.reddit.com/r/programming/comments/1tqbgp4/networking_fundamentals_for_developers_devops_and/) ⭐️ 6.0/10
 
-A new web game called "Continue? Y/N" lets players rapidly approve or deny AI agent permission requests in 60 seconds, simulating the tension between productivity and security. This game highlights the real-world problem of permission fatigue in AI agents, where users may blindly approve requests, leading to security risks. It sparks discussion on better permission design and security practices. Players can "cheat" by denying all requests quickly, earning a "security-conscious engineer" badge but missing the overblock warning. Some actions like reading ~/.zshrc are flagged as unsafe, but community members note that secrets should not be stored there.
+A new tutorial-style guide on networking fundamentals has been published, targeting developers, DevOps, and platform engineers. This guide helps fill a common knowledge gap for developers and operations professionals who often lack formal networking training, improving their ability to troubleshoot and design distributed systems. The guide is posted on Reddit's programming subreddit by user iximiuz, but no specific technical details or sections are provided in the summary.
 
-hackernews · Wirbelwind · May 28, 13:02 · [Discussion](https://news.ycombinator.com/item?id=48308376)
+reddit · r/programming · /u/iximiuz · May 28, 18:08
 
-**Background**: AI agents often request permissions to execute commands or access files, and users may experience permission fatigue—a phenomenon where frequent prompts lead to automatic approval. This mirrors alarm fatigue in healthcare, where excessive alerts desensitize responders. Tools like yoloAI and Claude Code's "dangerously-skip-permissions" flag attempt to address this by using sandboxes or skipping prompts entirely.
+**Background**: Networking is a critical skill for developers and DevOps engineers, yet many come from backgrounds focused on code or system administration without deep network knowledge. Understanding concepts like TCP/IP, DNS, HTTP, and load balancing is essential for building reliable, scalable applications.
 
-<details><summary>References</summary>
-<ul>
-<li><a href="https://grith.ai/blog/permission-fatigue-security-failure">Permission Fatigue Is Not a UX Problem. It Is a Security Failure. | grith</a></li>
-<li><a href="https://daniliants.com/insights/github-kstenerud-yoloai-permission-fatigue-is-a-real-problem-sandbox-e/">yoloAI: Disposable Sandboxes End AI Agent Permission Fatigue</a></li>
-<li><a href="https://thomas-wiegold.com/blog/claude-code-dangerously-skip-permissions/">Claude Code dangerously-skip- permissions ... | Thomas Wiegold Blog</a></li>
-
-</ul>
-</details>
-
-**Discussion**: Comments are mixed: some find the game fun and thought-provoking, while others criticize its representation of security risks, noting that reading ~/.zshrc is not inherently unsafe if secrets are not stored there. Some suggest grouping requests into realistic "packs" to better simulate real-world scenarios.
-
-**Tags**: `#AI safety`, `#game`, `#security`, `#agent permissions`
+**Tags**: `#networking`, `#devops`, `#tutorial`, `#platform engineering`
 
 ---
 
 <a id="item-17"></a>
-## [Hallucinate: A Browser-Based MMO Rave](https://hallucinate.site/) ⭐️ 6.0/10
+## [IBM 9020: The Mainframe That Guided Air Traffic](https://www.reddit.com/r/programming/comments/1tq52x8/air_traffic_control_the_ibm_9020/) ⭐️ 6.0/10
 
-Hallucinate is a browser-based massively multiplayer online rave experience that has been open-sourced on GitHub under the MIT license. This project demonstrates how web technologies can create shared social experiences without requiring downloads or VR hardware, making virtual raves accessible to anyone with a browser. The project is hosted on GitHub at github.com/stagas/hallucinate and is licensed under MIT, welcoming contributions from the community.
+A Reddit post highlights the historical IBM 9020 system, which served as the backbone of air traffic control in the UK and US from the 1970s to the 1990s. This retrospective underscores the critical role of early mainframe computing in ensuring aviation safety, and offers lessons for modern system reliability and redundancy. The IBM 9020 was a custom configuration of IBM System/360 mainframes, using multiple processors for redundancy. It operated at London's West Drayton center from 1974 to 1990.
 
-hackernews · stagas · May 28, 03:50 · [Discussion](https://news.ycombinator.com/item?id=48304260)
+reddit · r/programming · /u/fagnerbrack · May 28, 14:21
 
-**Background**: Massively multiplayer online (MMO) raves are virtual events where many users gather simultaneously to dance and socialize. Browser-based implementations like Hallucinate use WebGL and WebAudio to render 3D environments and stream music without plugins.
+**Background**: Air traffic control systems require extremely high reliability. The IBM 9020 was built by gluing together several System/360 computers to provide failover capability, a pioneering approach at the time.
 
-**Discussion**: Commenters shared nostalgic references to similar projects like Secret Sky 2021 and theclub.zone, and offered gameplay suggestions such as FPS-style controls and platformer jumping mechanics.
+<details><summary>References</summary>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/IBM_9020">IBM 9020 - Wikipedia</a></li>
+<li><a href="https://en.wikipedia.org/wiki/IBM_System/360">IBM System/360 - Wikipedia</a></li>
+<li><a href="https://hackaday.com/tag/ibm-9020/">Ibm 9020 | Hackaday</a></li>
 
-**Tags**: `#web`, `#music`, `#social`, `#open-source`
+</ul>
+</details>
+
+**Tags**: `#history`, `#air traffic control`, `#IBM`, `#retrospective`
+
+---
+
+<a id="item-18"></a>
+## [Apache Fory Serialization 1.0.0 Released](https://www.reddit.com/r/programming/comments/1tpz0os/apache_fory_serialization_100_released_now/) ⭐️ 6.0/10
+
+Apache Fory Serialization 1.0.0 has been released, introducing a unified cross-language (xlang) type system as the default serialization mode across Java, Python, C++, Rust, Go, C#, Swift, JavaScript, Dart, Kotlin, and Scala. It also adds support for Decimal, bfloat16, dense arrays, Android serialization, and various language-specific improvements. This release simplifies cross-language data exchange by providing a unified type system and high-performance serialization, which is critical for microservices and polyglot architectures. The addition of new data types and platform support broadens its applicability in data-intensive applications. The xlang type system is now the default serialization mode, enabling seamless data exchange between supported languages. Performance improvements include JIT compilation and zero-copy techniques, achieving ultra-fast serialization speeds.
+
+reddit · r/programming · /u/Shawn-Yang25 · May 28, 09:58
+
+**Background**: Apache Fory is a multi-language serialization framework that uses JIT compilation and zero-copy techniques for high performance. It provides a schema IDL for defining data structures and supports automatic serialization with reference and polymorphism handling. The xlang type system maps types across languages, addressing differences in type systems.
+
+<details><summary>References</summary>
+<ul>
+<li><a href="https://fory.apache.org/blog/fory_rust_versatile_serialization_framework/">Introducing Apache Fory™ Rust: A Versatile Serialization</a></li>
+<li><a href="https://fory.apache.org/docs/next/guide/cpp/">C++ Serialization Guide | Apache Fory™</a></li>
+<li><a href="https://fory.apache.org/docs/specification/xlang_type_mapping/">Xlang Type Mapping | Apache Fory™</a></li>
+
+</ul>
+</details>
+
+**Tags**: `#serialization`, `#Apache`, `#multi-language`, `#framework`, `#release`
+
+---
+
+<a id="item-19"></a>
+## [Stream Plumbing Patterns for Embedded Systems](https://www.reddit.com/r/programming/comments/1tq0lqp/stream_plumbing_in_embedded_systems/) ⭐️ 6.0/10
+
+A developer shared practical patterns for stream plumbing in embedded systems, formalizing solutions for interfacing modules on constrained platforms based on personal experience. This matters because embedded systems often lack standardized patterns for data stream handling, and these patterns can improve code reuse and reliability in resource-constrained environments. The patterns are based on the author's frustrations and aim to formalize approaches that have worked well recently, but no specific code or implementation details are provided in the post.
+
+reddit · r/programming · /u/MickJC_75 · May 28, 11:19
+
+**Background**: Stream plumbing refers to the design of data flow between modules in embedded systems, often involving buffering, filtering, and routing on devices with limited memory and processing power. Formalizing such patterns helps developers avoid reinventing solutions and reduces bugs in constrained platforms.
+
+**Tags**: `#embedded systems`, `#stream plumbing`, `#software patterns`, `#constrained platforms`
 
 ---
